@@ -1,9 +1,13 @@
-import { DropdownItem, DropdownMenu, DropdownToggle, Form, FormGroup, Input, Label, Nav, NavItem, NavLink, UncontrolledDropdown } from 'reactstrap'
+import { Form, FormGroup, Input, Label, Nav, NavItem, NavLink } from 'reactstrap'
 import './OrderPage.css'
+import CheckboxList from './CheckboxList';
+import CounterWithOrder from './CounterWithOrder';
+import React, { useState } from 'react';
+
 
 export default function OrderPage() {
     return (
-        <>
+        <div className='order-page-container'>
             <header className="header">
                 <h1>Teknolojik Yemekler</h1>
                 <Nav>
@@ -31,7 +35,7 @@ export default function OrderPage() {
             <section class="pizza-description">
                 <p>Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.</p>
             </section>
-            <section class="choose-size-and-crust">
+            <section class="choose-size-and-dough">
                 <div class="chose-size">
                     <Form>
                         <FormGroup>
@@ -63,11 +67,52 @@ export default function OrderPage() {
                         </FormGroup>
                     </Form>
                 </div>
-                <div>
-                    
+                <div class="dough-selection">
+                    <label for="dough-select" style={{ fontWeight: 'bold' }}>Hamur Seç*</label>
+                    <select id="dough-select">
+                        <option value="">--Hamur Kalınlığı--</option>
+                        <option value="ince">İnce</option>
+                        <option value="orta">Orta</option>
+                        <option value="kalin">Kalın</option>
+                    </select>
                 </div>
             </section >
-        </>
+            <section class="additional-ingredients">
+                <CheckboxList />
+            </section>
+            <section class="siparis-notu">
+                <Form>
+                    <FormGroup>
+                        <Label for="name" style={{ display: 'block', textAlign: 'left', fontWeight: 'bold' }}>İsim Soyisim</Label>
+                        <Input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="İsim ve soyisim yazın..."
+                            style={{ padding: '1rem' }}
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="orderNote" style={{ display: 'block', textAlign: 'left', fontWeight: 'bold' }}>Sipariş Notu</Label>
+                        <Input
+                            type="textarea"
+                            name="orderNote"
+                            id="orderNote"
+                            placeholder="Siparişine eklemek istediğin bir not var mı?"
+                            style={{ padding: '1rem' }}
+                        />
+                    </FormGroup>
+                </Form>
+            </section>
+            <section className="siparisler-toplami">
+                <p>Siparişler Toplamı</p>
+                <p>Seçimler: 25.00₺</p>
+                <p>Toplam: 110.50₺</p>
+            </section>
+            <div className='counter-order'>
+                <CounterWithOrder />
+            </div>
+        </div>
     )
 
 

@@ -1,7 +1,11 @@
+.order-page-container {
+    width: 30rem;
+}
+
+
 .header {
     background-color: #CE2829;
     color: white;
-    /*width: 35rem;*/
     /*height: 10rem;*/
     padding-top: 3rem;
     padding-left: 3rem;
@@ -21,6 +25,7 @@
 .ordered-pizza h2 {
     text-align: left;
     padding: 1rem 3rem;
+    font-size:25px;
 }
 
 .price-info {
@@ -42,4 +47,24 @@
     font-size: 19   px;
     padding: 1rem 3rem;
     width: 30rem; 
+}
+.choose-size-and-dough {
+    display: flex;
+    justify-content: space-around;
+}
+
+.choose-size{
+    padding: 10rem 3rem;
+}
+
+
+.dough-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.additional-ingredients,
+.siparis-notu, 
+.counter-order{
+    margin: 0 3rem;
 }
