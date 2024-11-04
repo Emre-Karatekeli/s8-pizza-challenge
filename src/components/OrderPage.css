@@ -1,0 +1,45 @@
+.header {
+    background-color: #CE2829;
+    color: white;
+    /*width: 35rem;*/
+    /*height: 10rem;*/
+    padding-top: 3rem;
+    padding-left: 3rem;
+    padding-right: 3rem;    
+    font-weight: bold;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.header .nav-link {
+    color: white;
+}
+
+.header .nav-item:first-child {
+    font-weight: normal;
+}
+
+.ordered-pizza h2 {
+    text-align: left;
+    padding: 1rem 3rem;
+}
+
+.price-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    /*padding-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem; */
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pizza-description {
+    text-align: left;
+    font-size: 19   px;
+    padding: 1rem 3rem;
+    width: 30rem; 
+}
