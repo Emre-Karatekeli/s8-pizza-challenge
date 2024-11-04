@@ -3,9 +3,15 @@ import './OrderPage.css'
 import CheckboxList from './CheckboxList';
 import CounterWithOrder from './CounterWithOrder';
 import React, { useState } from 'react';
+import NameInput from './NameInput';
 
 
 export default function OrderPage() {
+    const [isOrderDisabled, setIsOrderDisabled] = useState(false); // [Yeni Satır] - Sipariş butonunun aktifliğini kontrol eden state
+
+    const handleValidationChange = (isCheckboxValid, isNameValid) => { // [Yeni Satır] - Tüm validasyonları kontrol eden callback fonksiyonu
+        setIsOrderDisabled(!(isCheckboxValid && isNameValid)); // Eğer validasyonlardan biri başarısızsa butonu pasif yap
+    };
     return (
         <div className='order-page-container'>
             <header className="header">
@@ -78,20 +84,11 @@ export default function OrderPage() {
                 </div>
             </section >
             <section class="additional-ingredients">
-                <CheckboxList />
+                <CheckboxList onValidationChange={(isCheckboxValid) => handleValidationChange(isCheckboxValid, null)} /> {/* [Değişiklik] - CheckboxList'in onValidationChange fonksiyonunu çağırmak için */}
             </section>
             <section class="siparis-notu">
                 <Form>
-                    <FormGroup>
-                        <Label for="name" style={{ display: 'block', textAlign: 'left', fontWeight: 'bold' }}>İsim Soyisim</Label>
-                        <Input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="İsim ve soyisim yazın..."
-                            style={{ padding: '1rem' }}
-                        />
-                    </FormGroup>
+                    <NameInput onValidationChange={(isNameValid) => handleValidationChange(null, isNameValid)} /> {/* [Değişiklik] - NameInput'un onValidationChange fonksiyonunu çağırmak için */}
                     <FormGroup>
                         <Label for="orderNote" style={{ display: 'block', textAlign: 'left', fontWeight: 'bold' }}>Sipariş Notu</Label>
                         <Input
@@ -105,12 +102,12 @@ export default function OrderPage() {
                 </Form>
             </section>
             <section className="siparisler-toplami">
-                <p>Siparişler Toplamı</p>
+                <p style={{ textAlign: 'left', fontWeight: 'bold' }}>Siparişler Toplamı</p>
                 <p>Seçimler: 25.00₺</p>
                 <p>Toplam: 110.50₺</p>
             </section>
             <div className='counter-order'>
-                <CounterWithOrder />
+                <CounterWithOrder isDisabled={isOrderDisabled} /> {/* [Değişiklik] - CounterWithOrder'a isDisabled prop'u eklenerek sipariş butonu kontrol edildi */}
             </div>
         </div>
     )

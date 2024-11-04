@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-export default function CounterWithOrder() {
+export default function CounterWithOrder({ isDisabled }) {
     const [count, setCount] = useState(1);
 
     const handleDecrease = () => {
-        setCount(count > 1 ? count - 1 : 1); // Sayı 1'den aşağı düşmesin
+        setCount(count > 1 ? count - 1 : 1);
     };
 
     const handleIncrease = () => {
@@ -30,7 +30,7 @@ export default function CounterWithOrder() {
             >
                 +
             </button>
-            <button onClick={handleOrder} style={{ backgroundColor: '#FDC913', marginLeft: '1rem', width:'48%' }}>
+            <button onClick={handleOrder} disabled={isDisabled} style={{ backgroundColor: '#FDC913', marginLeft: '1rem', width:'48%' }}>
                 SİPARİŞ VER
             </button>
         </div>
