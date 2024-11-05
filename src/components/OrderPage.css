@@ -72,3 +72,9 @@
 .counter-order{
     margin: 0 3rem;
 }
+
+.siparisler-toplami{
+    border: 1px solid gray;
+    padding: 4rem;
+    margin: 2rem;
+}

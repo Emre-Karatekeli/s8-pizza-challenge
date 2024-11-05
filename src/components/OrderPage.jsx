@@ -9,6 +9,11 @@ import NameInput from './NameInput';
 export default function OrderPage() {
     const [isOrderDisabled, setIsOrderDisabled] = useState(false); // [Yeni Satır] - Sipariş butonunun aktifliğini kontrol eden state
 
+    const [totalPrice, setTotalPrice] = useState(0); // [Yeni Satır] 
+    const handlePriceChange = (price) => {
+        setTotalPrice(price); // [Yeni Satır] - CheckboxList'ten gelen fiyatı güncelleme işlemi
+    };
+
     const handleValidationChange = (isCheckboxValid, isNameValid) => { // [Yeni Satır] - Tüm validasyonları kontrol eden callback fonksiyonu
         setIsOrderDisabled(!(isCheckboxValid && isNameValid)); // Eğer validasyonlardan biri başarısızsa butonu pasif yap
     };
@@ -30,7 +35,7 @@ export default function OrderPage() {
                     </NavItem>
                 </Nav>
             </header>
-            <section class="ordered-pizza">
+            <section className="ordered-pizza">
                 <h2>Position Absolute Acı Pizza</h2>
                 <div class="price-info">
                     <span class="total-price">85.50 ₺</span>
@@ -38,10 +43,10 @@ export default function OrderPage() {
                     <span class="quantity">(200)</span>
                 </div>
             </section>
-            <section class="pizza-description">
+            <section className="pizza-description">
                 <p>Frontent Dev olarak hala position:absolute kullanıyorsan bu çok acı pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen pizzetta denir.</p>
             </section>
-            <section class="choose-size-and-dough">
+            <section className="choose-size-and-dough">
                 <div class="chose-size">
                     <Form>
                         <FormGroup>
@@ -83,10 +88,12 @@ export default function OrderPage() {
                     </select>
                 </div>
             </section >
-            <section class="additional-ingredients">
-                <CheckboxList onValidationChange={(isCheckboxValid) => handleValidationChange(isCheckboxValid, null)} /> {/* [Değişiklik] - CheckboxList'in onValidationChange fonksiyonunu çağırmak için */}
+            <section className="additional-ingredients">
+                <CheckboxList 
+                onValidationChange={(isCheckboxValid) => handleValidationChange(isCheckboxValid, null)} 
+                onPriceChange={handlePriceChange}  /> {/* [Değişiklik] - CheckboxList'in onValidationChange fonksiyonunu çağırmak için */} {/*[Yeni Satır] */}
             </section>
-            <section class="siparis-notu">
+            <section className="siparis-notu">
                 <Form>
                     <NameInput onValidationChange={(isNameValid) => handleValidationChange(null, isNameValid)} /> {/* [Değişiklik] - NameInput'un onValidationChange fonksiyonunu çağırmak için */}
                     <FormGroup>
@@ -100,11 +107,21 @@ export default function OrderPage() {
                         />
                     </FormGroup>
                 </Form>
+                <div style={{ width: '100%', height: '2px', backgroundColor: 'lightgray' }}></div>
             </section>
             <section className="siparisler-toplami">
                 <p style={{ textAlign: 'left', fontWeight: 'bold' }}>Siparişler Toplamı</p>
-                <p>Seçimler: 25.00₺</p>
-                <p>Toplam: 110.50₺</p>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                    <span>Seçimler:</span>
+                    <span>{totalPrice}₺</span> {/* [Yeni Satır] */}
+
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{color:'red', fontWeight: '#CE2829'}}>Toplam:</span>
+                    <span style={{color:'red', fontWeight: '#CE2829'}}>110.50₺</span>
+                </div>
             </section>
             <div className='counter-order'>
                 <CounterWithOrder isDisabled={isOrderDisabled} /> {/* [Değişiklik] - CounterWithOrder'a isDisabled prop'u eklenerek sipariş butonu kontrol edildi */}

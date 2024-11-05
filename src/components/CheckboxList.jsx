@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, Input, Label } from 'reactstrap';
 
-export default function CheckboxList({ onValidationChange }) {
+export default function CheckboxList({ onValidationChange, onPriceChange  }) {
     const ingredients = [
         'Pepperoni', 'Sosis',
         'Kanada Jambonu', 'Tavuk Izgara',
@@ -34,6 +34,9 @@ export default function CheckboxList({ onValidationChange }) {
         }
 
         setSelectedIngredients(updatedSelection);
+
+        const price = updatedSelection.length * 5; // [Yeni Satır]
+        onPriceChange(price); // [Yeni Satır]
     };
 
     return (
