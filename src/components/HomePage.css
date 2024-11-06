@@ -1,7 +1,10 @@
 .homepage {
     background-color: #CE2829;
     position: relative;
-    margin: 15rem 20rem;
+    padding: 10rem 15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .homepage h1 {
@@ -17,12 +20,15 @@
     background-color: #FDC913;
     border-radius: 2rem;
     padding: 1rem 2rem;
+    width: 200px; /* Örneğin, genişlik ekleyin */
+    display: block;
+    margin: 0 auto; /* Butonu yatayda ortalar */
 }
 
 .homepage img{
     position: absolute;
-    bottom: -20rem;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50rem;
+    width: 70%;
 }
