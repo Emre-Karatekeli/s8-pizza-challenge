@@ -1,0 +1,28 @@
+.homepage {
+    background-color: #CE2829;
+    position: relative;
+    margin: 15rem 20rem;
+}
+
+.homepage h1 {
+    color: white;
+    padding: 2rem 0; 
+}
+
+.homepage h2 {
+    color: white;
+}
+
+.homepage button {
+    background-color: #FDC913;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+}
+
+.homepage img{
+    position: absolute;
+    bottom: -20rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50rem;
+}
